@@ -1,0 +1,24 @@
+databaseChangeLog:
+  - changeSet:
+      id: 0006-chat-room-default-data
+      author: iborisenko
+      context: prod
+      runOnChange: true
+      loadUpdateData:
+        primaryKey: id
+        columns:
+          - column:
+              header: id
+              name: id
+              type: "string"
+          - column:
+              header: name
+              name: name
+              type: "string"
+        file: data/chat_room.csv
+        relativeToChangelogFile: true
+        separator: ';'
+        quotchar: "\""
+        seperator: ';'
+        encoding: UTF-8
+        tableName: chat_room
