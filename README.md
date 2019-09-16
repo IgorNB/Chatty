@@ -5,7 +5,7 @@
 [![SonarCloud Bug](https://sonarcloud.io/api/project_badges/measure?project=com.lig%3Achatty&metric=bugs)](https://sonarcloud.io/dashboard?id=com.lig%3Achatty)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 # chatty Pet-Project
-See demo on [youtube]().
+See demo on [youtube](https://www.youtube.com/watch?v=C8f1TeAxvR0).
 
 (Chat) Sample project which illustrates JWT secured statless rest-api & websocket (through RabbitMQ) in Spring Boot.
 
@@ -37,11 +37,12 @@ npm start
 ```
 * Alternative is to start full environment in separate docker containers (1 nginx loadbalancer, >1 Spring backend services, 1 Postgres DB database, 1 RabbitMQ MQ). Please wait - it takes some time after container is up. 
 You will get (relative to host):
-1.  api: localhost:8090
-2.  api swagger ui: localhost:8090/swagger-ui.html
-3.  spring actuator (per server): localhost:8090/actuator
-4.  rabbitmq ui: localhost:15672 (guest/guest)
-5.  front-end ui sample: localhost:8080
+1.  nginx loadbalancer: localhost:8090
+2.  api: localhost:8091 & 8092
+3.  api swagger ui: localhost:8091/swagger-ui.html & 8092
+4.  spring actuator (per server): localhost:8091/actuator & 8092
+5.  rabbitmq ui: localhost:15672 (guest/guest)
+6.  front-end ui sample: localhost:8080
  
 ```
 mvnw clean install -DskipTests
