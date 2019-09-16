@@ -50,7 +50,7 @@ spring:
   profiles: "H2"
   datasource:
     hikari:
-      maximum-pool-size: 100
+      maximum-pool-size: 20
     url: "jdbc:h2:mem:testdb"
     username: "sa"
     password: ""
@@ -60,7 +60,7 @@ spring:
   profiles: "postgres"
   datasource:
     hikari:
-      maximum-pool-size: 100
+      maximum-pool-size: 20
     url: "jdbc:postgresql://psql:5432/chatty"
     username: "postgres"
     password: "pwd"
