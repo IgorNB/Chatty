@@ -1,0 +1,490 @@
+databaseChangeLog:
+- changeSet:
+    id: 1568624652950-1
+    author: iborisenko (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+            name: id
+            type: VARCHAR(255)
+        - column:
+            constraints:
+              nullable: false
+            defaultValueNumeric: 0
+            name: version
+            type: INT
+        - column:
+            name: created_date
+            type: BIGINT
+        - column:
+            name: updated_date
+            type: BIGINT
+        - column:
+            constraints:
+              nullable: false
+            name: name
+            type: VARCHAR(255)
+        - column:
+            name: created_by_user_id
+            type: VARCHAR(255)
+        - column:
+            name: last_upd_by_user_id
+            type: VARCHAR(255)
+        tableName: authority
+- changeSet:
+    id: 1568624652950-2
+    author: iborisenko (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+            name: id
+            type: VARCHAR(255)
+        - column:
+            constraints:
+              nullable: false
+            defaultValueNumeric: 0
+            name: version
+            type: INT
+        - column:
+            name: created_date
+            type: BIGINT
+        - column:
+            name: updated_date
+            type: BIGINT
+        - column:
+            name: name
+            type: VARCHAR(255)
+        - column:
+            name: created_by_user_id
+            type: VARCHAR(255)
+        - column:
+            name: last_upd_by_user_id
+            type: VARCHAR(255)
+        tableName: chat_room
+- changeSet:
+    id: 1568624652950-3
+    author: iborisenko (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+            name: id
+            type: VARCHAR(255)
+        - column:
+            constraints:
+              nullable: false
+            defaultValueNumeric: 0
+            name: version
+            type: INT
+        - column:
+            name: created_date
+            type: BIGINT
+        - column:
+            name: updated_date
+            type: BIGINT
+        - column:
+            name: message
+            type: VARCHAR(255)
+        - column:
+            name: created_by_user_id
+            type: VARCHAR(255)
+        - column:
+            name: last_upd_by_user_id
+            type: VARCHAR(255)
+        - column:
+            constraints:
+              nullable: false
+            name: author_id
+            type: VARCHAR(255)
+        - column:
+            constraints:
+              nullable: false
+            name: chat_room_id
+            type: VARCHAR(255)
+        tableName: chat_room_message
+- changeSet:
+    id: 1568624652950-4
+    author: iborisenko (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+            name: id
+            type: VARCHAR(255)
+        - column:
+            constraints:
+              nullable: false
+            defaultValueNumeric: 0
+            name: version
+            type: INT
+        - column:
+            name: created_date
+            type: BIGINT
+        - column:
+            name: updated_date
+            type: BIGINT
+        - column:
+            name: created_by_user_id
+            type: VARCHAR(255)
+        - column:
+            name: last_upd_by_user_id
+            type: VARCHAR(255)
+        - column:
+            constraints:
+              nullable: false
+            name: chat_room_id
+            type: VARCHAR(255)
+        - column:
+            constraints:
+              nullable: false
+            name: user_id
+            type: VARCHAR(255)
+        tableName: chat_room_user
+- changeSet:
+    id: 1568624652950-5
+    author: iborisenko (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+            name: user_id
+            type: VARCHAR(255)
+        - column:
+            constraints:
+              nullable: false
+            name: authority_id
+            type: VARCHAR(255)
+        tableName: user_authority
+- changeSet:
+    id: 1568624652950-6
+    author: iborisenko (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+            name: id
+            type: VARCHAR(255)
+        - column:
+            constraints:
+              nullable: false
+            defaultValueNumeric: 0
+            name: version
+            type: INT
+        - column:
+            name: created_date
+            type: BIGINT
+        - column:
+            name: updated_date
+            type: BIGINT
+        - column:
+            constraints:
+              nullable: false
+            name: email
+            type: VARCHAR(255)
+        - column:
+            constraints:
+              nullable: false
+            name: email_verified
+            type: BOOLEAN
+        - column:
+            name: image_url
+            type: VARCHAR(255)
+        - column:
+            constraints:
+              nullable: false
+            name: name
+            type: VARCHAR(255)
+        - column:
+            name: password
+            type: VARCHAR(255)
+        - column:
+            name: provider
+            type: VARCHAR(255)
+        - column:
+            name: provider_id
+            type: VARCHAR(255)
+        - column:
+            name: created_by_user_id
+            type: VARCHAR(255)
+        - column:
+            name: last_upd_by_user_id
+            type: VARCHAR(255)
+        tableName: users
+- changeSet:
+    id: 1568624652950-7
+    author: iborisenko (generated)
+    changes:
+    - addPrimaryKey:
+        columnNames: user_id, authority_id
+        tableName: user_authority
+- changeSet:
+    id: 1568624652950-8
+    author: iborisenko (generated)
+    changes:
+    - addPrimaryKey:
+        columnNames: id
+        constraintName: authorityPK
+        tableName: authority
+- changeSet:
+    id: 1568624652950-9
+    author: iborisenko (generated)
+    changes:
+    - addPrimaryKey:
+        columnNames: id
+        constraintName: chat_roomPK
+        tableName: chat_room
+- changeSet:
+    id: 1568624652950-10
+    author: iborisenko (generated)
+    changes:
+    - addPrimaryKey:
+        columnNames: id
+        constraintName: chat_room_messagePK
+        tableName: chat_room_message
+- changeSet:
+    id: 1568624652950-11
+    author: iborisenko (generated)
+    changes:
+    - addPrimaryKey:
+        columnNames: id
+        constraintName: chat_room_userPK
+        tableName: chat_room_user
+- changeSet:
+    id: 1568624652950-12
+    author: iborisenko (generated)
+    changes:
+    - addPrimaryKey:
+        columnNames: id
+        constraintName: usersPK
+        tableName: users
+- changeSet:
+    id: 1568624652950-13
+    author: iborisenko (generated)
+    changes:
+    - addUniqueConstraint:
+        columnNames: email
+        constraintName: UK6dotkott2kjsp8vw4d0m25fb7
+        tableName: users
+- changeSet:
+    id: 1568624652950-14
+    author: iborisenko (generated)
+    changes:
+    - addUniqueConstraint:
+        columnNames: user_id, chat_room_id
+        constraintName: UKcdb7qkpu90rxjhqr6hgo6yodj
+        tableName: chat_room_user
+- changeSet:
+    id: 1568624652950-15
+    author: iborisenko (generated)
+    changes:
+    - addUniqueConstraint:
+        columnNames: name
+        constraintName: UKj9vkma9pkho8of1bwxnt5rvgb
+        tableName: authority
+- changeSet:
+    id: 1568624652950-16
+    author: iborisenko (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: user_id
+        baseTableName: chat_room_user
+        constraintName: FK1483pmv1lx4x5py5gm0m1109v
+        deferrable: false
+        initiallyDeferred: false
+        referencedColumnNames: id
+        referencedTableName: users
+- changeSet:
+    id: 1568624652950-17
+    author: iborisenko (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: author_id
+        baseTableName: chat_room_message
+        constraintName: FK4xjxr184vsbsr46w10cco896w
+        deferrable: false
+        initiallyDeferred: false
+        referencedColumnNames: id
+        referencedTableName: users
+- changeSet:
+    id: 1568624652950-18
+    author: iborisenko (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: last_upd_by_user_id
+        baseTableName: users
+        constraintName: FK6xg9dnkhj4hyr3wsx65lla7q3
+        deferrable: false
+        initiallyDeferred: false
+        referencedColumnNames: id
+        referencedTableName: users
+- changeSet:
+    id: 1568624652950-19
+    author: iborisenko (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: created_by_user_id
+        baseTableName: chat_room_message
+        constraintName: FK9g13apsl63el5pk2x0lvje7tu
+        deferrable: false
+        initiallyDeferred: false
+        referencedColumnNames: id
+        referencedTableName: users
+- changeSet:
+    id: 1568624652950-20
+    author: iborisenko (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: created_by_user_id
+        baseTableName: chat_room
+        constraintName: FKfje6or7dtcsqxyxxcpoef817c
+        deferrable: false
+        initiallyDeferred: false
+        referencedColumnNames: id
+        referencedTableName: users
+- changeSet:
+    id: 1568624652950-21
+    author: iborisenko (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: authority_id
+        baseTableName: user_authority
+        constraintName: FKgvxjs381k6f48d5d2yi11uh89
+        deferrable: false
+        initiallyDeferred: false
+        referencedColumnNames: id
+        referencedTableName: authority
+- changeSet:
+    id: 1568624652950-22
+    author: iborisenko (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: user_id
+        baseTableName: user_authority
+        constraintName: FKhi46vu7680y1hwvmnnuh4cybx
+        deferrable: false
+        initiallyDeferred: false
+        referencedColumnNames: id
+        referencedTableName: users
+- changeSet:
+    id: 1568624652950-23
+    author: iborisenko (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: chat_room_id
+        baseTableName: chat_room_message
+        constraintName: FKj8dlx5ourmappdky3fmd6siov
+        deferrable: false
+        initiallyDeferred: false
+        referencedColumnNames: id
+        referencedTableName: chat_room
+- changeSet:
+    id: 1568624652950-24
+    author: iborisenko (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: last_upd_by_user_id
+        baseTableName: authority
+        constraintName: FKjpwha20glpl5d6pqok5pwvexp
+        deferrable: false
+        initiallyDeferred: false
+        referencedColumnNames: id
+        referencedTableName: users
+- changeSet:
+    id: 1568624652950-25
+    author: iborisenko (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: last_upd_by_user_id
+        baseTableName: chat_room_message
+        constraintName: FKlwowgqj3dla9yw0uaradgb3q9
+        deferrable: false
+        initiallyDeferred: false
+        referencedColumnNames: id
+        referencedTableName: users
+- changeSet:
+    id: 1568624652950-26
+    author: iborisenko (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: chat_room_id
+        baseTableName: chat_room_user
+        constraintName: FKn7wfsq1ii61la6vi9gigw4pk1
+        deferrable: false
+        initiallyDeferred: false
+        referencedColumnNames: id
+        referencedTableName: chat_room
+- changeSet:
+    id: 1568624652950-27
+    author: iborisenko (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: created_by_user_id
+        baseTableName: authority
+        constraintName: FKo1ka8y6lpa2udc5q42fllkvt2
+        deferrable: false
+        initiallyDeferred: false
+        referencedColumnNames: id
+        referencedTableName: users
+- changeSet:
+    id: 1568624652950-28
+    author: iborisenko (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: created_by_user_id
+        baseTableName: chat_room_user
+        constraintName: FKp6bduobxs7cqs0i507bhy486f
+        deferrable: false
+        initiallyDeferred: false
+        referencedColumnNames: id
+        referencedTableName: users
+- changeSet:
+    id: 1568624652950-29
+    author: iborisenko (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: created_by_user_id
+        baseTableName: users
+        constraintName: FKpcsj08dbah77s3pprdt49kleh
+        deferrable: false
+        initiallyDeferred: false
+        referencedColumnNames: id
+        referencedTableName: users
+- changeSet:
+    id: 1568624652950-30
+    author: iborisenko (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: last_upd_by_user_id
+        baseTableName: chat_room_user
+        constraintName: FKr9f3y834xi94bowcub4gv95wd
+        deferrable: false
+        initiallyDeferred: false
+        referencedColumnNames: id
+        referencedTableName: users
+- changeSet:
+    id: 1568624652950-31
+    author: iborisenko (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: last_upd_by_user_id
+        baseTableName: chat_room
+        constraintName: FKrg2w55obpg864cg8vdop7bcm8
+        deferrable: false
+        initiallyDeferred: false
+        referencedColumnNames: id
+        referencedTableName: users
+

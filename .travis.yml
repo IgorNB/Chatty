@@ -1,0 +1,19 @@
+sudo: false
+dist: trusty
+language: java
+install: true
+jdk:
+  - oraclejdk8
+
+script:
+  - "mvn clean"
+  - "mvn verify sonar:sonar"
+
+addons:
+  sonarcloud:
+    organization: "igornb-github"
+
+cache:
+  directories:
+    - $HOME/.m2/repository
+    - $HOME/.sonar/cache

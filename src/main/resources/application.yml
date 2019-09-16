@@ -1,0 +1,81 @@
+management:
+  endpoint:
+    health:
+      show-details: always
+    logfile:
+      external-file: 'rolling.log'
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+server:
+  port: 8090
+  tomcat:
+    max-threads: 200
+
+logging:
+  config: 'classpath:log4j2.properties'
+
+
+app:
+  room-message:
+    pageSize: 20
+  room-member:
+    pageSize: 20
+  auth:
+    tokenSecret: 926D96C90030DD58429D2751AC1BDBBC
+    tokenExpirationMsec: 864000000
+    tokenExpirationMsecForRememberMe: 864000000
+
+spring:
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  liquibase.enabled: true
+  profiles:
+    active:
+      - "springDataJpa"
+      - "H2"
+      - "simpleWebSocketBroker"
+---
+spring:
+  profiles: "springDataJpa"
+
+#choose one of dataBases. "H2" don't need any installation and should be used only for local single machine development/testing
+---
+spring:
+  profiles: "H2"
+  datasource:
+    hikari:
+      maximum-pool-size: 100
+    url: "jdbc:h2:mem:testdb"
+    username: "sa"
+    password: ""
+    driver-class-name: "org.h2.Driver"
+---
+spring:
+  profiles: "postgres"
+  datasource:
+    hikari:
+      maximum-pool-size: 100
+    url: "jdbc:postgresql://psql:5432/chatty"
+    username: "postgres"
+    password: "pwd"
+    driver-class-name: "org.postgresql.Driver"
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+
+#choose one of webSocketBrokers. "simpleWebSocketBroker" don't need any installation and should be used only for local single machine development/testing
+---
+spring:
+  profiles: "simpleWebSocketBroker"
+---
+spring:
+  profiles: "rabbitMqWebSocketBroker"
+app:
+  relay:
+    host: rabbitmq
+    port: 61613

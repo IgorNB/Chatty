@@ -1,0 +1,51 @@
+version: '2'
+
+services:
+  nginx:
+    image: nginx:latest
+    container_name: production_nginx
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - 8090:8090
+      - 443:443
+  chatty1:
+    environment:
+      - POSTGRES_DB=chatty
+      - SPRING_PROFILES_ACTIVE=rabbitMqWebSocketBroker, postgres, springDataJpa
+    build: .
+    ports:
+      - 8091:8090
+    depends_on:
+      - psql
+      - rabbitmq-stomp
+
+  chatty2:
+    environment:
+      - POSTGRES_DB=chatty
+      - SPRING_PROFILES_ACTIVE=rabbitMqWebSocketBroker, postgres, springDataJpa
+    build: .
+    ports:
+      - 8092:8090
+    depends_on:
+      - psql
+      - rabbitmq-stomp
+
+  psql:
+    container_name: psql
+    image: postgres:alpine
+    environment:
+      - POSTGRES_DB=chatty
+      - POSTGRES_PASSWORD=pwd
+    expose:
+      - 5432
+    ports:
+      - 5432:5432
+
+  rabbitmq-stomp:
+    container_name: rabbitmq
+    image: resilva87/docker-rabbitmq-stomp
+    ports:
+      - 5672:5672
+      - 15672:15672
+      - 61613:61613
