@@ -29,7 +29,7 @@ public class SimpleWebSocketConfig implements WebSocketMessageBrokerConfigurer {
 	public void configureMessageBroker(MessageBrokerRegistry registry) {
 		registry.enableSimpleBroker("/queue/", "/topic/");
 		registry.setApplicationDestinationPrefixes("/chatroom");
-		registry.configureBrokerChannel().taskExecutor().corePoolSize(300).maxPoolSize(300).queueCapacity(3000).keepAliveSeconds(900);
+		registry.configureBrokerChannel().taskExecutor().corePoolSize(40).maxPoolSize(60).queueCapacity(3000).keepAliveSeconds(900);
 	}
 
 	@Bean
@@ -47,7 +47,7 @@ public class SimpleWebSocketConfig implements WebSocketMessageBrokerConfigurer {
 	public ThreadPoolTaskScheduler messageBrokerTaskScheduler() {
 		ThreadPoolTaskScheduler scheduler = new ThreadPoolTaskScheduler();
 		scheduler.setThreadNamePrefix("MessageBrokerOLOLO-");
-		scheduler.setPoolSize(60/*Runtime.getRuntime().availableProcessors()*/);
+		scheduler.setPoolSize(20);
 		scheduler.setRemoveOnCancelPolicy(true);
 		return scheduler;
 	}
@@ -55,12 +55,12 @@ public class SimpleWebSocketConfig implements WebSocketMessageBrokerConfigurer {
 	@Override
 	public void configureClientOutboundChannel(ChannelRegistration registration)
 	{
-		registration.taskExecutor().corePoolSize(100).maxPoolSize(100);
+		registration.taskExecutor().corePoolSize(40).maxPoolSize(60);
 	}
 
 	@Override
 	public void configureClientInboundChannel(ChannelRegistration registration)
 	{
-		registration.taskExecutor().corePoolSize(100).maxPoolSize(100);
+		registration.taskExecutor().corePoolSize(40).maxPoolSize(60);
 	}
 }
