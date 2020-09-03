@@ -36,7 +36,7 @@
     "html-webpack-plugin": "~3.2.0",
     "ignore-not-found-export-plugin": "^1.0.1",
     "jest": "^23.6.0",
-    "serve": "~9.1.0",
+    "serve": "~10.1.2",
     "style-loader": "~0.20.3",
     "wait-on": "^2.1.0",
     "url-loader": "^2.1.0",
